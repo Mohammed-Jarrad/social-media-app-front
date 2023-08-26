@@ -1,0 +1,92 @@
+@import "../../config.scss";
+
+.leftbar {
+	@include themify($themes) {
+		@include mobile {
+			display: none;
+		}
+		position: sticky;
+		top: 50px;
+		height: calc(100vh - 50px);
+		overflow-y: scroll;
+		background-color: themed("bg");
+		color: themed("textColor");
+		&::-webkit-scrollbar {
+			display: none;
+		}
+		.container {
+			padding: 0 10px 10px;
+			hr {
+				margin: 10px 0;
+				width: 100%;
+				border: none;
+				height: 1px;
+				background-color: themed("border");
+			}
+			.user {
+				display: flex;
+				align-items: center;
+				@include tablet {
+					justify-content: center;
+				}
+				gap: 10px;
+				margin-bottom: 5px;
+				cursor: pointer;
+				font-family: "JetBrains Mono";
+				position: sticky;
+				top: 0;
+				background-color: themed("bg");
+				padding: 5px;
+				border-bottom: 1px solid themed("border");
+				img {
+					width: 40px;
+					height: 40px;
+					border-radius: 50%;
+					object-fit: cover;
+				}
+				span {
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					overflow: hidden;
+					word-break: break-all;
+					&:hover {
+						overflow: visible;
+						white-space: normal;
+					}
+					@include tablet {
+						display: none;
+					}
+				}
+			}
+			.menu {
+				display: flex;
+				flex-direction: column;
+
+				gap: 3px;
+				@include tablet {
+					align-items: center;
+				}
+				.item {
+					border-radius: 5px;
+					display: flex;
+					align-items: center;
+					gap: 10px;
+					cursor: pointer;
+					padding: 7px 5px;
+					&:hover {
+						background-color: themed("hover-bg");
+					}
+					img {
+						width: 25px;
+						height: 25px;
+					}
+					span {
+						@include tablet {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}

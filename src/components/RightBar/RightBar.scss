@@ -1,0 +1,87 @@
+@import "../../config.scss";
+
+.rightbar {
+	@include themify($themes) {
+		@include tablet {
+			display: none;
+		}
+		position: sticky;
+		top: 50px;
+		height: calc(100vh - 50px);
+		overflow-y: scroll;
+		background-color: themed("bgSoft");
+		color: themed("textColor");
+		padding: 10px 20px 10px 10px;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		.container {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			.item {
+				border-radius: 10px;
+				background-color: themed("bg");
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+				padding: 10px;
+				font-size: smaller;
+				box-shadow: 3px 0px 8px -7px #000000;
+				> span {
+					color: themed("textColorSoft");
+				}
+				.user {
+					@include centering_between();
+					.userInfo {
+						position: relative;
+						@include centering_between(10);
+						cursor: pointer;
+						img {
+							width: 30px;
+							height: 30px;
+							border-radius: 50%;
+							object-fit: cover;
+						}
+						.online {
+							position: absolute;
+							width: 10px;
+							height: 10px;
+							border-radius: 50%;
+							background-color: limegreen;
+							top: 0;
+							left: 22px;
+						}
+						p {
+							font-size: 13px;
+							color: themed("textColorSoft");
+
+							span {
+								color: themed("textColor");
+							}
+						}
+					}
+					> span {
+						color: themed("textColorSoft");
+					}
+					.buttons {
+						@include centering_between(3);
+						button {
+							font-size: smaller;
+							color: white;
+							padding: 7px;
+						}
+						button:first-child {
+							background-color: #5271ff;
+						}
+						button:last-child {
+							background-color: rgb(233, 14, 79);
+						}
+					}
+				}
+			}
+		}
+	}
+}

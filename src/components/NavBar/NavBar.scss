@@ -1,0 +1,151 @@
+@import "../../config.scss";
+
+.navbar {
+	@include themify($themes) {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 50px;
+		background-color: themed("bg");
+		padding: 10px 20px;
+		border-bottom: 1px solid themed("border");
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		color: themed("textColor");
+		svg {
+			cursor: pointer;
+			&:hover {
+				transform: scale(0.96);
+			}
+		}
+		.left {
+			flex: 1;
+			display: flex;
+			align-items: center;
+			gap: 20px;
+			span {
+				font-family: "JetBrains Mono";
+				color: themed("logo");
+				font-weight: bold;
+				font-size: 25px;
+			}
+
+			> svg {
+				font-size: 25px;
+			}
+
+			.search {
+				display: flex;
+				align-items: stretch;
+				gap: 5px;
+				border: 1px solid themed("border");
+				padding: 5px;
+				background-color: themed("bg");
+				border-radius: 10px;
+				transition: all 0.3s;
+				width: 10%;
+				.search-check {
+					display: none;
+				}
+				@include desktop {
+					&:has(input:focus) {
+						width: 40%;
+						border-color: themed("logo");
+					}
+				}
+				label {
+					cursor: pointer;
+					display: flex;
+				}
+				input {
+					width: 100%;
+					border: none;
+					background-color: transparent;
+					color: themed("textColor");
+					&:focus {
+						outline: none;
+					}
+				}
+			}
+		}
+
+		.right {
+			display: flex;
+			align-items: center;
+			gap: 20px;
+			> svg {
+				font-size: 25px;
+			}
+
+			.user {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				cursor: pointer;
+				span {
+					font-size: smaller;
+					font-family: "JetBrains mono";
+					user-select: none;
+					&:hover {
+						font-weight: bold;
+					}
+				}
+				img {
+					width: 35px;
+					height: 35px;
+					border-radius: 50%;
+					object-fit: cover;
+				}
+			}
+		}
+
+		@include tablet {
+			gap: 10px;
+			.left {
+				flex: none;
+				gap: 10px;
+				span {
+					display: none;
+				}
+				.search {
+					padding: 3px;
+					width: auto;
+					position: relative;
+					&:has(.search-check:checked) {
+						.search-check {
+							display: none;
+						}
+						input {
+							display: block;
+						}
+					}
+					input {
+						transition: all 0.3s;
+						display: none;
+						position: absolute;
+						top: 32px;
+						left: 0;
+						background-color: themed("bgSoft");
+						width: auto;
+						color: themed("textColor");
+						border: 1px solid themed("border");
+						border-radius: 10px;
+						padding: 10px;
+						&::placeholder {
+							color: white;
+						}
+					}
+				}
+			}
+			.right {
+				gap: 10px;
+				.user {
+					span {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}

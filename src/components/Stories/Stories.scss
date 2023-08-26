@@ -1,0 +1,85 @@
+@import "../../config.scss";
+
+.stories {
+	@include themify($themes) {
+		margin-bottom: 30px;
+		height: 170px;
+		width: 100%;
+		position: relative;
+		background-color: themed("bg");
+		border-radius: 10px;
+		overflow: hidden;
+		padding: 0 10px;
+
+		.swiper {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			.swiper-wrapper {
+				// width: 100%;
+				.swiper-slide {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					gap: 10px;
+					overflow: hidden;
+					img {
+						cursor: pointer;
+						width: 70px;
+						height: 70px;
+						border-radius: 50%;
+						object-fit: cover;
+						padding: 2px;
+						background: linear-gradient(white, white) padding-box,
+							linear-gradient(to right, rgb(128, 128, 228), rgb(70, 201, 58))
+								border-box;
+						border-radius: 50em;
+						border: 3px solid transparent;
+					}
+					span {
+						text-align: center;
+						color: themed("textColor");
+						display: block;
+						width: 100%;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						overflow: hidden;
+						transition: all 0.3s;
+						&:active {
+							overflow: visible;
+							white-space: normal;
+						}
+					}
+					&.user {
+						.image {
+							position: relative;
+							svg {
+								position: absolute;
+								right: 0;
+								bottom: 0;
+								color: rgb(11, 105, 212);
+								border-radius: 50%;
+								background-color: white;
+								width: 25px;
+								height: 25px;
+								transition: all 0.3s;
+								opacity: 0.8;
+								&:hover {
+									color: rgb(43, 121, 211);
+									opacity: 1;
+								}
+								&:active {
+									width: 28px;
+									height: 28px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

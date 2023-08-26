@@ -1,0 +1,80 @@
+.login {
+	height: 100vh;
+	background-color: rgb(193, 190, 255);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.card {
+		width: 70%;
+		min-height: 500px;
+		background-color: white;
+		display: flex;
+		border-radius: 10px;
+		overflow: hidden;
+		.left {
+			flex: 1;
+			background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
+				url("https://images.pexels.com/photos/3228727/pexels-photo-3228727.jpeg?auto=compress&cs=tinysrgb&w=1600")
+					center;
+			background-size: cover;
+			padding: 50px;
+			display: flex;
+			flex-direction: column;
+			gap: 30px;
+			color: white;
+			h1 {
+				font-size: 100px;
+				line-height: 100px;
+			}
+			p {
+				font-family: "JetBrains Mono";
+			}
+			button {
+				width: 50%;
+				background-color: white;
+			}
+		}
+
+		.right {
+			flex: 1;
+			padding: 50px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			gap: 50px;
+
+			h1 {
+				color: #555;
+			}
+
+			form {
+				display: flex;
+				flex-direction: column;
+				gap: 30px;
+
+				input {
+					padding: 20px 10px;
+					border: none;
+					border-bottom: 1px solid lightgray;
+					&:focus {
+						outline: none;
+						border-bottom: 1px solid black;
+					}
+				}
+
+				label {
+					display: flex;
+					gap: 5px;
+					cursor: pointer;
+					width: fit-content;
+				}
+
+				button {
+					width: 50%;
+					background-color: #938eef;
+					color: white;
+				}
+			}
+		}
+	}
+}

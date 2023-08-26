@@ -1,0 +1,81 @@
+$themes: (
+	light: (
+		textColor: #000,
+		bg: #e9ecef,
+		logo: darkblue,
+		bgSoft: #f8f9fa,
+		textColorSoft: #555,
+		border: lightgray,
+		hover-bg: #f8f9fa,
+	),
+	dark: (
+		textColor: whitesmoke,
+		bg: #343a40,
+		logo: #ced4da,
+		bgSoft: #495057,
+		textColorSoft: lightgray,
+		border: #868e96,
+		hover-bg: #495057,
+	),
+);
+
+@mixin themify($themes) {
+	@each $theme, $map in $themes {
+		.theme-#{$theme} & {
+			$theme-map: () !global;
+			@each $key, $submap in $map {
+				$value: map-get(map-get($themes, $theme), "#{$key}");
+				$theme-map: map-merge(
+					$theme-map,
+					(
+						$key: $value,
+					)
+				) !global;
+			}
+			@content;
+			$theme-map: null !global;
+		}
+	}
+}
+
+@function themed($key) {
+	@return map-get($theme-map, $key);
+}
+
+@mixin centering_between($gap: 0) {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: #{$gap}px;
+}
+
+@mixin center($gap: 0) {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: #{$gap}px;
+}
+
+@mixin centering_alignitems($gap: 0) {
+	display: flex;
+	align-items: center;
+	gap: #{$gap}px;
+}
+
+// resposive
+
+@mixin tablet {
+	@media (max-width: 768px) {
+		@content;
+	}
+}
+@mixin mobile {
+	@media (max-width: 480px) {
+		@content;
+	}
+}
+@mixin desktop {
+	@media (min-width: 992px) {
+		@content;
+	}
+}

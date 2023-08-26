@@ -1,0 +1,60 @@
+@import "../../config.scss";
+
+.post {
+	@include themify($themes) {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		box-shadow: 3px 0px 8px -7px #000000;
+		border-radius: 10px;
+		padding: 15px;
+		background: themed("bg");
+		.container {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			.user {
+				@include centering_between();
+				.user-info {
+					@include centering_alignitems(10);
+					img {
+						width: 40px;
+						height: 40px;
+						border-radius: 50%;
+						object-fit: cover;
+					}
+					> div {
+						display: flex;
+						flex-direction: column;
+						.time {
+							font-size: 13px;
+							color: themed("textColorSoft");
+						}
+					}
+				}
+				svg {
+					cursor: pointer;
+				}
+			}
+			.desc {
+				color: themed("textColor");
+			}
+
+			> img {
+				max-width: 100%;
+				max-height: 300px;
+				object-fit: cover;
+			}
+
+			.options {
+				display: flex;
+				gap: 15px;
+				> span {
+					@include centering_alignitems(5);
+					user-select: none;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}
